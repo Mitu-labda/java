@@ -169,3 +169,68 @@ public class SLList{
    }
 }
 */
+
+9/7    
+//双链表
+
+public class DLList<abandon> {
+    public class Intnode{
+        public abandon item;
+        public Intnode next;
+        public Intnode pre;
+
+
+
+        public Intnode(abandon s, Intnode f,Intnode w) {
+            item = s;
+            next = f;
+            pre=w;
+
+        }
+    }
+
+    private Intnode sentFront;
+    private Intnode sentBack;
+    private int size;
+
+    public DLList(abandon x){
+        sentFront=new Intnode(null,sentBack,null);
+        sentBack=new Intnode(null,null,sentFront);
+        sentFront.next=new Intnode(x,sentFront,sentBack);
+
+        size=1;
+    }
+
+    public void addLast(abandon x){
+        Intnode L=new Intnode(x,sentBack,sentBack.pre);
+        sentBack.pre.next=L;
+        sentBack.pre=L;
+
+        size+=1;
+
+    }
+
+    public abandon Back(){
+        if (size == 0) {
+            throw new IllegalStateException("List is empty");
+        }
+        return sentBack.pre.item;
+    }
+
+
+
+    public void removeLast(){
+        if (size == 0) {
+            throw new IllegalStateException("List is empty");
+        }
+        sentBack.pre=sentBack.pre.pre;
+        sentBack.pre.pre.next=sentBack;
+        size-=1;
+    }
+
+    public int size(){
+        return size;
+    }
+
+
+}
