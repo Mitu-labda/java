@@ -224,7 +224,7 @@ public class DLList<abandon> {
             throw new IllegalStateException("List is empty");
         }
         sentBack.pre=sentBack.pre.pre;
-        sentBack.pre.pre.next=sentBack;
+        sentBack.pre.next=sentBack;
         size-=1;
     }
 
