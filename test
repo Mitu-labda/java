@@ -1,0 +1,21 @@
+some example:
+message=['d','d','o','g','b','a'],banned=['b','a','d'],return ['d','o','g']
+message=['d','d','o','g','b','a'],banned=['o','g'],return ['d','d','b','a']
+
+public static char[] filter(char[] message,char[] banned){
+  int ms=matchStart(message,banned);
+  if(ms==-1){
+    return message;
+  }
+  int numToCopy=message.length-banned.length;
+  char[] result=new char[numToCopy];
+  int messageIndex=((ms+banned.length())%message.length);
+  for(int i=0;i<numToCopy;i++){
+    result[i]=message[messageIndex];
+    if(messageIndex==ms){//如果复制的内容不连续，进行跳过，
+      messageIndex=messageIndex+banned.length()%message.length);
+    }
+    messageIndex=(messageIndex+1)%message.length();
+  }
+  return result;
+}
